@@ -7,6 +7,7 @@ function MapWidget(){
 
 
       // const [map, setMap] = useState(null)
+      // const gUrl = 'https://maps.googleapis.com/maps/api/js?key=' + process.env.REACT_APP_GMAP_API_KEY + '&callback=initMap&v=weekly';
 
       // const initMap = useCallback(function callback() {
       function initMap() {
@@ -33,7 +34,8 @@ function MapWidget(){
       window.initMap = initMap;
 
       useEffect (() => {
-        console.log('in useEffect')
+        console.log('in useEffect');
+        //console.log(process.env.REACT_APP_GMAP_API_KEY);
       }, [])
       // useEffect (() => {
       //   loadMap();
@@ -46,7 +48,7 @@ function MapWidget(){
       return (
         <div>
           <ScriptTag isHydrating={true} type="text/javascript"
-            src= "https://maps.googleapis.com/maps/api/js?key=AIzaSyDRYLhxEC4AO-4No8hAmmbHSw6axTtrNxo&callback=initMap&v=weekly" 
+            src={"https://maps.googleapis.com/maps/api/js?key=" + process.env.REACT_APP_GMAP_API_KEY + "&callback=initMap&v=weekly"}
           />
           Breweries:
           <div id="map" style={{width: 800, height: 600}}></div>
