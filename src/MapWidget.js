@@ -5,13 +5,9 @@ import ScriptTag from 'react-script-tag';
 
 function MapWidget(){
 
-
-      // const [map, setMap] = useState(null)
-      // const gUrl = 'https://maps.googleapis.com/maps/api/js?key=' + process.env.REACT_APP_GMAP_API_KEY + '&callback=initMap&v=weekly';
-
       // const initMap = useCallback(function callback() {
       function initMap() {
-        console.log("in initMap")
+        console.log(`in initMap`)
 
         let map = new window.google.maps.Map(document.getElementById("map"), {
           zoom: 7,
@@ -26,28 +22,21 @@ function MapWidget(){
           "Breweries.geojson"
         );
 
-        // setMap(map)
-      // }, [])
-        }
+      }
 
-      // const initMap() {};
       window.initMap = initMap;
 
       useEffect (() => {
         console.log('in useEffect');
         //console.log(process.env.REACT_APP_GMAP_API_KEY);
       }, [])
-      // useEffect (() => {
-      //   loadMap();
-      // }, [loadMap])
-
-      // const onUnmount = React.useCallback(function callback(map) {
-      //   setMap(null)
-      // }, [])
     
+      //TODO: importing the google api might be better done with
+      //      https://stackoverflow.com/questions/34424845/adding-script-tag-to-react-jsx
+      //      alternatively, we could pull the ScriptTag back up into App.js
       return (
         <div>
-          <ScriptTag isHydrating={true} type="text/javascript"
+          <ScriptTag type="text/javascript"
             src={"https://maps.googleapis.com/maps/api/js?key=" + process.env.REACT_APP_GMAP_API_KEY + "&callback=initMap&v=weekly"}
           />
           Breweries:
